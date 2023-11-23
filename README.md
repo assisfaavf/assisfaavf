@@ -1,17 +1,17 @@
-- Robô Yaskawa Motoman
-- System Job Captação de dados do Sistema de Visão
+# Robô Yaskawa Motoman
+# System Job Captação de dados do Sistema de Visão
 <!---
 Programa de Captação de dados para o sistema de visão do Robô Yaskawa Motoman
 --->
-- Legendas
-# IN#() - Entrada;
-# IG#() - Grupo de entradas (composto por 8 entradas);
+# Legendas
+- IN#() - Entrada;
+- IG#() - Grupo de entradas (composto por 8 entradas);
  I000 - Variável inteira;
 - D000 - Variável double;
 - B000 - Variavel booleana;
 
 ```
-# Necessário no incio de todos os programas
+#Necessário no incio de todos os programas
 NOP
 #Label de identificação do inicio
 *INICIO
