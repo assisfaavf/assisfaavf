@@ -4,11 +4,11 @@
 Programa de Captação de dados para o sistema de visão do Robô Yaskawa Motoman
 --->
 #Legendas
-IN#() - Entrada 
-IG#() - Grupo de entradas (composto por 8 entradas)
-I000 - Variável inteira
-D000 - Variável double
-B000 - Variavel booleana
+IN#() - Entrada;
+IG#() - Grupo de entradas (composto por 8 entradas);
+I000 - Variável inteira;
+D000 - Variável double;
+B000 - Variavel booleana;
 
 ```
 #Necessário no incio de todos os programas
