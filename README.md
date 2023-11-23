@@ -9,17 +9,18 @@ Programa de Captação de dados para o sistema de visão do Robô Yaskawa Motoma
 - I000 - Variável inteira;
 - D000 - Variável double;
 - B000 - Variavel booleana;
-
+- * - Label;
 ```
-- Necessário no incio de todos os programas
+`Necessário no incio de todos os programas
 NOP
-#Label de identificação do inicio
 *INICIO
-#Delay para inicio da coleta de dados
+`Delay para inicio da coleta de dados
 DELAY 100
-#Espera o sensor da esteira ser acionado (ele trabalha em função reverva, permanecendo ligado até captar algo)
+`Espera o sensor da esteira ser acionado (ele trabalha em função reverva, permanecendo ligado até captar algo)
 WAIT IN#(1)=OFF
-#Recepção dos dados gerados pelo sistema de visão
+```
+-Recepção dos dados gerados pelo sistema de visão
+```
 `RECEBE X ESQUERDO
 DIN B001 IG#(21)
 DIN B002 IG#(22)
@@ -83,7 +84,9 @@ NOT B010 B010
 NOT B011 B011
 NOT B012 B012
 ENDIF
-#Realiza o tratamento dos dados para o inicio do conveyor
+```
+- Realiza o tratamento dos dados para o inicio do conveyor
+```
 `
 `
 SET D091 B010
@@ -94,7 +97,9 @@ MUL D093 65536
 ADD D094 D091
 ADD D094 D092
 ADD D094 D093
-#Inicia o processo de conveyor
+```
+- Inicia o processo de conveyor
+```
 `Marcador da primeira posição do conveyor
 `
 `
@@ -102,7 +107,7 @@ IF( I010=1 ) THEN
 `
 `Verifica se é esquerdo
   IF( D094=1000 ) THEN
-#Se for reconhecido como esquerdo inicia o processo para as posições do pé esquerdo
+`Se for reconhecido como esquerdo inicia o processo para as posições do pé esquerdo
 `Configura as posições de x
     SET D094 0
     SET D091 B001
@@ -149,7 +154,7 @@ IF( I010=1 ) THEN
     ADD D002 635000
     ADD D003 0
     MUL D003 10
-#Caso não seja esquerda então refaz os processos para as posições do pé direito
+`Caso não seja esquerda então refaz os processos para as posições do pé direito
     ELSE
 `Configura as posições de x
     SET D094 0
@@ -199,7 +204,9 @@ IF( I010=1 ) THEN
     MUL D003 10
   ENDIF
 ENDIF
-#Repete todos os processos para a posição 2 do conveyor
+```
+- Repete todos os processos para a posição 2 do conveyor
+```
 IF( I010=2) THEN
   `
   `
@@ -1073,15 +1080,19 @@ IF( I010=10) THEN
     MUL D047 10
   ENDIF
 ENDIF
-#Incrementa a variável I010 em 1
+```
+- Finaliza a ultima das 10 posições do conveyor
+- A partitar daqui começa a sobreposição dos registros
+```
+`Incrementa a variável I010 em 1
 INC I010
-#Se o conveyor ultrapassar 10 posições ele volta para a posição 1 e começa a sobrepor as variáveis recebidas
+`Se o conveyor ultrapassar 10 posições ele volta para a posição 1 e começa a sobrepor as variáveis recebidas
 IF( I010>=11 ) THEN
 SET IO10 1
 ENDIF
-#Aguarda a desativação do sensor de esteira
+`Aguarda a desativação do sensor de esteira
 WAIT IN#(1)=ON
-#Volta o porgrama para a posição da label inicio
+`Volta o porgrama para a posição da label inicio
 JUMP *INICIO
 END
 ```
