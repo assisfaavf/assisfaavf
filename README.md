@@ -1,5 +1,5 @@
-- Robô Yaskawa Motoman
-- System Job Captação de dados do Sistema de Visão
+# Robô Yaskawa Motoman
+# System Job Captação de dados do Sistema de Visão
 <!---
 Programa de Captação de dados para o sistema de visão do Robô Yaskawa Motoman
 --->
